@@ -1,0 +1,713 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive C Programming Tutorial</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --success: #2ecc71;
+            --dark: #1a252f;
+            --light: #ecf0f1;
+            --text: #333;
+            --code-bg: #282c34;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            display: flex;
+            background-color: #f5f7fa;
+            color: var(--text);
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Sidebar Navigation */
+        nav {
+            width: 280px;
+            background-color: var(--primary);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+            z-index: 10;
+        }
+
+        nav .logo {
+            padding: 20px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            background-color: var(--dark);
+            text-align: center;
+            border-bottom: 3px solid var(--secondary);
+        }
+
+        nav ul {
+            list-style: none;
+            overflow-y: auto;
+            flex: 1;
+        }
+
+        nav ul li {
+            padding: 15px 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        nav ul li:hover, nav ul li.active {
+            background-color: var(--secondary);
+            padding-left: 30px;
+        }
+
+        /* Main Content Area */
+        main {
+            flex: 1;
+            padding: 40px;
+            overflow-y: auto;
+            height: 100vh;
+        }
+
+        .module {
+            display: none;
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        .module.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 2.5rem;
+            border-bottom: 2px solid var(--light);
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            color: var(--secondary);
+            margin: 20px 0 10px 0;
+        }
+
+        p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        /* Tables styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            background: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        th, td {
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        /* Code Blocks */
+        pre {
+            background-color: var(--code-bg);
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-family: 'Consolas', 'Courier New', Courier, monospace;
+            margin: 15px 0;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+        }
+
+        .keyword { color: #c678dd; }
+        .type { color: #e5c07b; }
+        .string { color: #98c379; }
+        .comment { color: #5c6370; font-style: italic; }
+        .function { color: #61afef; }
+        .number { color: #d19a66; }
+
+        /* Interactive Playground */
+        .playground {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 25px 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .playground h3 {
+            margin-bottom: 15px;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .interactive-controls {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input, select {
+            padding: 8px 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        button {
+            background-color: var(--secondary);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        .output-box {
+            background-color: #000;
+            color: #0f0;
+            font-family: 'Consolas', monospace;
+            padding: 15px;
+            border-radius: 4px;
+            min-height: 60px;
+            white-space: pre-line;
+            box-shadow: inset 0 0 5px rgba(255,255,255,0.2);
+        }
+
+        /* Quiz Section */
+        .quiz-box {
+            background-color: #e8f4f8;
+            border-left: 5px solid var(--secondary);
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+            margin-top: 30px;
+        }
+
+        .quiz-options {
+            margin: 15px 0;
+        }
+
+        .quiz-option {
+            display: block;
+            margin: 8px 0;
+            padding: 10px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .quiz-option:hover {
+            background-color: #f0f0f0;
+        }
+
+        .quiz-feedback {
+            margin-top: 10px;
+            font-weight: bold;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">C Learn Labs</div>
+        <ul>
+            <li class="nav-item active" onclick="switchModule('structure', this)">1. Structure of C</li>
+            <li class="nav-item" onclick="switchModule('io', this)">2. Input / Output & Specifiers</li>
+            <li class="nav-item" onclick="switchModule('datatypes', this)">3. Data Types</li>
+            <li class="nav-item" onclick="switchModule('conditionals', this)">4. Conditionals</li>
+            <li class="nav-item" onclick="switchModule('loops', this)">5. Loops</li>
+            <li class="nav-item" onclick="switchModule('functions', this)">6. Functions</li>
+        </ul>
+    </nav>
+
+    <main>
+        
+        <section id="structure" class="module active">
+            <h1>Structure of a C Program</h1>
+            <p>Every C program follows a specific Blueprint. Before code can run, it needs essential boilerplate instructions telling the compiler where to start and what standard tools to fetch.</p>
+            
+            <h2>The Standard Template</h2>
+            <pre>
+<span class="comment">// 1. Preprocessor Directive (Include Header Files)</span>
+<span class="keyword">#include</span> <span class="string">&lt;stdio.h&gt;</span>
+
+<span class="comment">// 2. Main Function - execution starts here</span>
+<span class="type">int</span> <span class="function">main</span>() {
+    
+    <span class="comment">// 3. Statements / Executable Code</span>
+    <span class="function">printf</span>(<span class="string">"Hello, World!\n"</span>);
+    
+    <span class="comment">// 4. Return Statement</span>
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</pre>
+
+            <div class="playground">
+                <h3>💻 Code Blueprint Explorer</h3>
+                <p>Change the return value or the statement string below to see how it affects compilation simulation.</p>
+                <div class="interactive-controls">
+                    <label>Custom Text:</label>
+                    <input type="text" id="struct-text" value="Hello, Coders!">
+                    <label>Return Status:</label>
+                    <select id="struct-return">
+                        <option value="0">0 (Success)</option>
+                        <option value="1">1 (Error/Failure)</option>
+                    </select>
+                    <button onclick="runStructureDemo()">Run Program</button>
+                </div>
+                <div class="output-box" id="struct-output">Click "Run Program" to execute...</div>
+            </div>
+
+            <div class="quiz-box" id="quiz-struct">
+                <h3>💡 Quick Check</h3>
+                <p>What is the definitive starting point of execution in any standard C program?</p>
+                <div class="quiz-options">
+                    <div class="quiz-option" onclick="checkAnswer('quiz-struct', false, 'Not quite! standard libraries provide tools like printf, but they do not start execution.')">The #include directive</div>
+                    <div class="quiz-option" onclick="checkAnswer('quiz-struct', true, 'Spot on! The compiler explicitly seeks out the main() function to begin execution.')">The main() function</div>
+                    <div class="quiz-option" onclick="checkAnswer('quiz-struct', false, 'Incorrect. Return statements exit blocks, they do not start them.')">The return 0 statement</div>
+                </div>
+                <div class="quiz-feedback"></div>
+            </div>
+        </section>
+
+        <section id="io" class="module">
+            <h1>Input and Output (I/O) & Format Specifiers</h1>
+            <p>To communicate with the outside world, C relies on functions packaged inside <code>&lt;stdio.h&gt;</code>. Because C is statically typed, you must use <strong>Format Specifiers</strong> as placeholders to tell <code>printf()</code> and <code>scanf()</code> exactly how to interpret data types traveling through streams.</p>
+            
+            <h2>Essential Format Specifiers Reference</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Specifier</th>
+                        <th>Data Type</th>
+                        <th>Usage Example</th>
+                        <th>Output Representation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>%d</code> or <code>%i</code></td>
+                        <td>Integer</td>
+                        <td><code>int age = 25;</code></td>
+                        <td>Base-10 signed whole numbers (e.g., <code>25</code>)</td>
+                    </tr>
+                    <tr>
+                        <td><code>%f</code></td>
+                        <td>Float (Decimal numbers)</td>
+                        <td><code>float price = 12.99;</code></td>
+                        <td>Fractional values (defaults to 6 decimal places: <code>12.990000</code>)</td>
+                    </tr>
+                    <tr>
+                        <td><code>%.2f</code></td>
+                        <td>Float (Formatted)</td>
+                        <td><code>float price = 12.99;</code></td>
+                        <td>Limits layout representation to 2 decimal places (e.g., <code>12.99</code>)</td>
+                    </tr>
+                    <tr>
+                        <td><code>%c</code></td>
+                        <td>Character</td>
+                        <td><code>char grade = 'A';</code></td>
+                        <td>A single letter, digit, or symbol (e.g., <code>A</code>)</td>
+                    </tr>
+                    <tr>
+                        <td><code>%s</code></td>
+                        <td>String (Char Array)</td>
+                        <td><code>char name[] = "John";</code></td>
+                        <td>Sequences of characters until a null-terminator is hit</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>Detailed Real-World Use Case: Automated Billing Engine</h2>
+            <p>Imagine writing software for a physical store kiosk. The app must prompt the employee for an item name (string), quantity purchased (integer), and unit cost (floating point decimal), process calculations, and present a formatted checkout ticket.</p>
+
+            <pre>
+<span class="keyword">#include</span> <span class="string">&lt;stdio.h&gt;</span>
+
+<span class="type">int</span> <span class="function">main</span>() {
+    <span class="type">char</span> item[<span class="number">30</span>];
+    <span class="type">int</span> qty;
+    <span class="type">float</span> unitPrice, total;
+
+    <span class="comment">// 1. Reading User Input via Scanf passing addresses</span>
+    <span class="function">printf</span>(<span class="string">"Enter Item Name: "</span>);
+    <span class="function">scanf</span>(<span class="string">"%s"</span>, item); <span class="comment">// No & needed for arrays/strings!</span>
+
+    <span class="function">printf</span>(<span class="string">"Enter Quantity & Unit Price: "</span>);
+    <span class="function">scanf</span>(<span class="string">"%d %f"</span>, &qty, &unitPrice); <span class="comment">// & essential for primitive values</span>
+
+    <span class="comment">// Processing Logic</span>
+    total = qty * unitPrice;
+
+    <span class="comment">// 2. Displaying clean structured invoice receipts</span>
+    <span class="function">printf</span>(<span class="string">"\n--- INVOICE RECEIPT ---\n"</span>);
+    <span class="function">printf</span>(<span class="string">"Item: %s\n"</span>, item);
+    <span class="function">printf</span>(<span class="string">"Qty:  %d units @ $%.2f each\n"</span>, qty, unitPrice);
+    <span class="function">printf</span>(<span class="string">"Total Due: $%.2f\n"</span>, total);
+
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</pre>
+
+            <div class="playground">
+                <h3>💻 Kiosk Billing Terminal Simulator</h3>
+                <p>Modify inputs to trace how variables pass through format specifiers directly into memory allocations:</p>
+                <div class="interactive-controls">
+                    <label>Product Name (%s):</label>
+                    <input type="text" id="io-case-item" value="Coffee-Beans">
+                    
+                    <label>Qty (%d):</label>
+                    <input type="number" id="io-case-qty" value="3" style="width: 60px;">
+                    
+                    <label>Price (%f):</label>
+                    <input type="number" id="io-case-price" value="4.50" step="0.01" style="width: 80px;">
+                    
+                    <button onclick="runAdvancedIODemo()">Compile & Run Kiosk</button>
+                </div>
+                <div class="output-box" id="io-case-output">Awaiting stream execution orders...</div>
+            </div>
+
+            <div class="quiz-box" id="quiz-io">
+                <h3>💡 Quick Check</h3>
+                <p>Which layout format configuration limits an output representation float value to exactly 3 decimal structures?</p>
+                <div class="quiz-options">
+                    <div class="quiz-option" onclick="checkAnswer('quiz-io', false, '%3f tries to preserve safe field width padding spaces, not precision decimals.')">%3f</div>
+                    <div class="quiz-option" onclick="checkAnswer('quiz-io', true, 'Precisely! Using a dot modifier like %.3f specifies trailing float decimal values.')">%.3f</div>
+                    <div class="quiz-option" onclick="checkAnswer('quiz-io', false, 'This configuration breaks standard C validation checks completely.')">%f.3</div>
+                </div>
+                <div class="quiz-feedback"></div>
+            </div>
+        </section>
+
+        <section id="datatypes" class="module">
+            <h1>Data Types in C</h1>
+            <p>C is a statically typed language. You must explicitly declare what box size and formatting type a variable belongs to before storing data in it.</p>
+            
+            <h2>Syntax Guides</h2>
+            <pre>
+<span class="comment">// 1. Integer (Whole numbers)</span>
+<span class="type">int</span> speed = <span class="number">85</span>;
+
+<span class="comment">// 2. Array (Homogeneous continuous sequence)</span>
+<span class="type">int</span> scores[<span class="number">3</span>] = {<span class="number">90</span>, <span class="number">85</span>, <span class="number">95</span>};
+
+<span class="comment">// 3. String (Array of characters ending with a null terminator '\0')</span>
+<span class="type">char</span> greeting[] = <span class="string">"Hello"</span>;</pre>
+
+            <div class="playground">
+                <h3>💻 Data Type Investigator</h3>
+                <p>Select a data type to inspect its behavior and array indexes layout visually:</p>
+                <div class="interactive-controls">
+                    <label>Pick Type:</label>
+                    <select id="dt-selector" onchange="updateDataTypeDemo()">
+                        <option value="int">Integer (int)</option>
+                        <option value="array">Integer Array (int[])</option>
+                        <option value="string">String (char[])</option>
+                    </select>
+                    <button onclick="updateDataTypeDemo()">Inspect</button>
+                </div>
+                <div class="output-box" id="dt-output">Select a type above to run a breakdown.</div>
+            </div>
+
+            <div class="quiz-box" id="quiz-dt">
+                <h3>💡 Quick Check</h3>
+                <p>If you create a C string like <code>char name[] = "Hi";</code>, how many bytes does it occupy in memory?</p>
+                <div class="quiz-options">
+                    <div class="quiz-option" onclick="checkAnswer('quiz-dt', false, 'Remember the hidden terminator!')">2 bytes</div>
+                    <div class="quiz-option" onclick="checkAnswer('quiz-dt', true, 'Bingo! It takes 3 bytes because C automatically adds a hidden escape Null Terminator (\'\0\') at the end.')">3 bytes</div>
+                    <div class="quiz-option" onclick="checkAnswer('quiz-dt', false, 'Too high.')">4 bytes</div>
+                </div>
+                <div class="quiz-feedback"></div>
+            </div>
+        </section>
+
+        <section id="conditionals" class="module">
+            <h1>Conditional Statements</h1>
+            <p>Conditionals provide logic branching, allowing programs to make decisions based on runtime values using boolean logic patterns.</p>
+            
+            <h2>Syntax</h2>
+            <pre>
+<span class="keyword">if</span> (condition) {
+    <span class="comment">// Runs if true</span>
+} <span class="keyword">else if</span> (another_condition) {
+    <span class="comment">// Runs if secondary condition is true</span>
+} <span class="keyword">else</span> {
+    <span class="comment">// Runs if all conditions fail</span>
+}</pre>
+
+            <div class="playground">
+                <h3>💻 Logical Branching Evaluator</h3>
+                <p>Adjust the test score to see which conditional pathway triggers.</p>
+                <div class="interactive-controls">
+                    <label>Enter Numeric Score (0-100):</label>
+                    <input type="number" id="cond-score" value="75" min="0" max="100">
+                    <button onclick="runConditionalDemo()">Evaluate Branching</button>
+                </div>
+                <div class="output-box" id="cond-output">Awaiting calculation...</div>
+            </div>
+
+            <div class="quiz-box" id="quiz-cond">
+                <h3>💡 Quick Check</h3>
+                <p>Which symbol acts as the structural evaluation operator checking if two values are equal in C?</p>
+                <div class="quiz-options">
+                    <div class="quiz-option" onclick="checkAnswer('quiz-cond', false, 'A single = is for assigning a value, not comparing.')">=</div>
+                    <div class="quiz-option" onclick="checkAnswer('quiz-cond', true, 'Perfect! Single = is assignment, double == evaluates equality.')">==</div>
+                    <div class="quiz-option" onclick="checkAnswer('quiz-cond', false, 'This is a logical AND operator.')">&&</div>
+                </div>
+                <div class="quiz-feedback"></div>
+            </div>
+        </section>
+
+        <section id="loops" class="module">
+            <h1>Loops in C</h1>
+            <p>Loops allow code blocks to be repeated until a specific loop termination condition is met.</p>
+            
+            <h2>Syntax</h2>
+            <pre>
+<span class="comment">// For Loop: Ideal when iterations count is predetermined</span>
+<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; count; i++) { ... }
+
+<span class="comment">// While Loop: Dynamic evaluation checking condition at each step start</span>
+<span class="keyword">while</span> (condition) { ... }</pre>
+
+            <div class="playground">
+                <h3>💻 Loop Counter & Unroller</h3>
+                <p>Choose loop type and length configuration parameters to unroll the cycle step-by-step.</p>
+                <div class="interactive-controls">
+                    <label>Loop Type:</label>
+                    <select id="loop-type">
+                        <option value="for">For Loop (i++ up to limit)</option>
+                        <option value="while">While Loop (countdown execution)</option>
+                    </select>
+                    <label>Iterations Limit:</label>
+                    <input type="number" id="loop-limit" value="4" min="1" max="10" style="width: 60px;">
+                    <button onclick="runLoopDemo()">Trace Loop Execution</button>
+                </div>
+                <div class="output-box" id="loop-output">Click Trace to simulate running engine.</div>
+            </div>
+
+            <div class="quiz-box" id="quiz-loops">
+                <h3>💡 Quick Check</h3>
+                <p>What happens if a while loop condition never turns false?</p>
+                <div class="quiz-options">
+                    <div class="quiz-option" onclick="checkAnswer('quiz-loops', false, 'The compiler cannot catch logic loops at compilation phase.')">Compilation error occurs</div>
+                    <div class="quiz-option" onclick="checkAnswer('quiz-loops', true, 'Correct! This causes an infinite loop, freezing execution threads until forcefully broken.')">An infinite loop occurs</div>
+                    <div class="quiz-option" onclick="checkAnswer('quiz-loops', false, 'Execution will run, but it won\'t quit naturally.')">The code skips completely</div>
+                </div>
+                <div class="quiz-feedback"></div>
+            </div>
+        </section>
+
+        <section id="functions" class="module">
+            <h1>Functions in C</h1>
+            <p>Functions divide large logic systems into reusable blocks. They can accept inputs (parameters) and hand back values (return types).</p>
+            
+            <h2>Syntax</h2>
+            <pre>
+<span class="comment">// Return_Type Function_Name (Parameters)</span>
+<span class="type">int</span> <span class="function">calculateSum</span>(<span class="type">int</span> a, <span class="type">int</span> b) {
+    <span class="keyword">return</span> a + b;
+}</pre>
+
+            <div class="playground">
+                <h3>💻 Scope & Parameter Passing Playground</h3>
+                <p>Pass custom integer arguments to our modular simulation function block:</p>
+                <div class="interactive-controls">
+                    <label>Argument X:</label>
+                    <input type="number" id="func-x" value="12" style="width: 70px;">
+                    <label>Argument Y:</label>
+                    <input type="number" id="func-y" value="8" style="width: 70px;">
+                    <button onclick="runFunctionDemo()">Call Function</button>
+                </div>
+                <div class="output-box" id="func-output">Ready to execute subroutines...</div>
+            </div>
+
+            <div class="quiz-box" id="quiz-func">
+                <h3>💡 Quick Check</h3>
+                <p>What keyword configuration should be applied as a function's return type when it returns no value?</p>
+                <div class="quiz-options">
+                    <div class="quiz-option" onclick="checkAnswer('quiz-func', false, 'null is an address pointer term, not a type.')">null</div>
+                    <div class="quiz-option" onclick="checkAnswer('quiz-func', false, 'int forces returning an integer.')">int</div>
+                    <div class="quiz-option" onclick="checkAnswer('quiz-func', true, 'Brilliant! The void type specifies that a function yields no returned value.')">void</div>
+                </div>
+                <div class="quiz-feedback"></div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Module Panel Switcher - Fixed direct context reference pass
+        function switchModule(moduleId, element) {
+            document.querySelectorAll('.module').forEach(m => m.classList.remove('active'));
+            document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+            
+            document.getElementById(moduleId).classList.add('active');
+            if (element) {
+                element.classList.add('active');
+            }
+        }
+
+        // Quiz Evaluator
+        function checkAnswer(quizBoxId, isCorrect, explanation) {
+            const quizBox = document.getElementById(quizBoxId);
+            const feedback = quizBox.querySelector('.quiz-feedback');
+            feedback.style.display = 'block';
+            
+            if (isCorrect) {
+                feedback.style.color = "var(--success)";
+                feedback.innerHTML = `🎉 Correct! ${explanation}`;
+            } else {
+                feedback.style.color = "#e74c3c";
+                feedback.innerHTML = `❌ ${explanation}`;
+            }
+        }
+
+        // --- Sandbox Execution Simulations ---
+
+        function runStructureDemo() {
+            const txt = document.getElementById('struct-text').value;
+            const ret = document.getElementById('struct-return').value;
+            
+            let log = `[System Compiler Launch...]\n`;
+            log += `Executing code step main()...\n`;
+            log += `👉 Output Stream stdout: "${txt}"\n`;
+            log += `Process exited naturally with exit code: ${ret}`;
+            
+            document.getElementById('struct-output').innerText = log;
+        }
+
+        function runAdvancedIODemo() {
+            const item = document.getElementById('io-case-item').value || "Unnamed-Item";
+            const qty = parseInt(document.getElementById('io-case-qty').value) || 0;
+            const price = parseFloat(document.getElementById('io-case-price').value) || 0.0;
+            const total = qty * price;
+
+            let log = `[SIMULATED EXECUTION STREAM - KIOSK CORE]\n`;
+            log += `>> capturing stream input values:\n`;
+            log += `   scanf("%s", item);        -> values recorded: "${item}"\n`;
+            log += `   scanf("%d %f", &qty, &unitPrice);\n`;
+            log += `   -> Assigned stack variables: qty = ${qty}, unitPrice = ${price.toFixed(6)}\n\n`;
+            log += `>> executing calculated total logic: total = qty * unitPrice;\n\n`;
+            log += `[CONSOLE PRINT OUTPUT]:\n`;
+            log += `-----------------------------\n`;
+            log += `--- INVOICE RECEIPT ---\n`;
+            log += `Item: ${item}\n`;
+            log += `Qty:  ${qty} units @ $${price.toFixed(2)} each\n`;
+            log += `Total Due: $${total.toFixed(2)}\n`;
+            log += `-----------------------------`;
+
+            document.getElementById('io-case-output').innerText = log;
+        }
+
+        function updateDataTypeDemo() {
+            const selection = document.getElementById('dt-selector').value;
+            let log = '';
+            
+            if(selection === 'int') {
+                log = `Type: int (Integer)\nDeclaration: int count = 42;\nMemory Footprint: Typically 4 Bytes\nValue representation: Whole Number (42)`;
+            } else if (selection === 'array') {
+                log = `Type: Integer Array\nDeclaration: int data[3] = {10, 20, 30};\nLayout in Stack memory:\n [Index 0] -> 10\n [Index 1] -> 20\n [Index 2] -> 30`;
+            } else {
+                log = `Type: String Array (char[])\nDeclaration: char text[] = "C";\nLayout including trailing structural terminator:\n [Index 0] -> 'C'\n [Index 1] -> '\\0' (Null Terminator Byte)`;
+            }
+            document.getElementById('dt-output').innerText = log;
+        }
+
+        function runConditionalDemo() {
+            const score = parseInt(document.getElementById('cond-score').value) || 0;
+            let log = `Evaluating code logic tree: if(${score} >= 90) ...\n`;
+            
+            if(score >= 90) {
+                log += `Result: Path [if] evaluation passed!\nConsole Result -> "Grade: A"`;
+            } else if (score >= 60) {
+                log += `Result: Path [else if] evaluation passed!\nConsole Result -> "Grade: Pass"`;
+            } else {
+                log += `Result: Primary evaluations failed. Dropped down to [else] block!\nConsole Result -> "Grade: Fail"`;
+            }
+            document.getElementById('cond-output').innerText = log;
+        }
+
+        function runLoopDemo() {
+            const type = document.getElementById('loop-type').value;
+            const limit = Math.min(Math.max(parseInt(document.getElementById('loop-limit').value) || 1, 1), 10);
+            let log = `Starting Execution Tracer Loop...\n\n`;
+            
+            if(type === 'for') {
+                for(let i=0; i < limit; i++) {
+                    log += `🔄 Loop Cycle Step active: i = ${i} (i < ${limit} holds True)\n`;
+                }
+                log += `\n🛑 Loop Terminated! Counter i reached ${limit}. (i < ${limit} evaluated False).`;
+            } else {
+                let count = limit;
+                while(count > 0) {
+                    log += `🔄 Cycle active: condition (count > 0) evaluates true. current count = ${count}\n`;
+                    count--;
+                }
+                log += `\n🛑 Loop broke! count hit 0. Expression (count > 0) is false.`;
+            }
+            document.getElementById('loop-output').innerText = log;
+        }
+
+        function runFunctionDemo() {
+            const x = parseInt(document.getElementById('func-x').value) || 0;
+            const y = parseInt(document.getElementById('func-y').value) || 0;
+            
+            let log = `1. execution jumps outside of normal main() scope...\n`;
+            log += `2. Copying runtime arguments inside parameters space (int a = ${x}, int b = ${y})\n`;
+            log += `3. Performing structural summation calculations inside black box...\n`;
+            log += `4. returning value derived from (a + b) [${x + y}] back to main code.\n\n`;
+            log += `Result output string: ${x + y}`;
+            
+            document.getElementById('func-output').innerText = log;
+        }
+
+        // Initialize defaults
+        updateDataTypeDemo();
+    </script>
+</body>
+</html>
+
+```
