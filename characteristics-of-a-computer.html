@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Computer System - Chapter 1 (Class 11 Computer Science)</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#f4f6f9;
+    color:#222;
+    line-height:1.7;
+}
+
+header{
+    background:#1e3a8a;
+    color:white;
+    padding:25px;
+    text-align:center;
+}
+
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:20px auto;
+}
+
+.section{
+    background:white;
+    margin-bottom:20px;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.1);
+}
+
+h2{
+    color:#1e3a8a;
+    margin-bottom:15px;
+}
+
+h3{
+    color:#2563eb;
+    margin-top:15px;
+    margin-bottom:10px;
+}
+
+ul{
+    padding-left:25px;
+}
+
+li{
+    margin-bottom:10px;
+}
+
+.model{
+    background:#eef4ff;
+    padding:15px;
+    border-left:5px solid #2563eb;
+    border-radius:5px;
+    font-weight:bold;
+    margin-top:10px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:15px;
+}
+
+table th,
+table td{
+    border:1px solid #ccc;
+    padding:10px;
+    text-align:left;
+}
+
+table th{
+    background:#1e3a8a;
+    color:white;
+}
+
+.search-box{
+    margin-bottom:20px;
+}
+
+.search-box input{
+    width:100%;
+    padding:12px;
+    border:2px solid #2563eb;
+    border-radius:8px;
+    font-size:16px;
+}
+
+.highlight{
+    background:yellow;
+}
+
+footer{
+    text-align:center;
+    padding:20px;
+    color:#555;
+}
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Computer System (Chapter 1)</h1>
+    <p>Class 11 Computer Science</p>
+</header>
+
+<div class="container">
+
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Search any topic...">
+    </div>
+
+    <div id="content">
+
+        <div class="section">
+            <h2>1. Introduction to Computers</h2>
+
+            <p>
+                A computer is defined as an electronic device that accepts data as input,
+                stores it, processes it according to a set of instructions, and then
+                generates meaningful output. This fundamental process underpins all
+                computer operations, transforming raw data into usable information.
+            </p>
+
+            <h3>Key Functions of a Computer</h3>
+
+            <ul>
+                <li>
+                    <strong>Input:</strong> The process of feeding raw data and instructions
+                    into the computer system. This can be done through various input devices
+                    such as keyboards, mice, scanners, and microphones.
+                </li>
+
+                <li>
+                    <strong>Storage:</strong> The ability of a computer to retain data and
+                    instructions for future use. This involves both primary storage (RAM)
+                    for immediate access and secondary storage (hard drives, SSDs) for
+                    long-term retention.
+                </li>
+
+                <li>
+                    <strong>Processing:</strong> The core function where the computer
+                    manipulates and transforms raw data into meaningful information. This
+                    is carried out by the Central Processing Unit (CPU) following the
+                    provided instructions.
+                </li>
+
+                <li>
+                    <strong>Output:</strong> The presentation of processed information to
+                    the user. Output devices include monitors, printers, speakers, and
+                    projectors.
+                </li>
+            </ul>
+
+            <div class="model">
+                Primitive Computer Model:<br>
+                Input (Data) → [Memory/Processing] → Output (Information)
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>2. Characteristics of a Computer</h2>
+
+            <ul>
+                <li>
+                    <strong>Word Length:</strong> This refers to the number of bits a
+                    computer's CPU can process at a single time. Common word lengths
+                    include 8, 16, 32, and 64 bits. A larger word length generally
+                    indicates a more powerful processor capable of handling more data
+                    simultaneously.
+                </li>
+
+                <li>
+                    <strong>Speed:</strong> Computers operate at incredibly high speeds,
+                    performing millions or even billions of operations per second. The
+                    speed is typically measured in fractions of a second, as detailed in
+                    the table below:
+                </li>
+            </ul>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Unit of Time</th>
+                        <th>Fraction of a Second</th>
+                        <th>Value (seconds)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Milliseconds (ms)</td>
+                        <td>One thousandth</td>
+                        <td>1/1,000</td>
+                    </tr>
+                    <tr>
+                        <td>Microseconds (μs)</td>
+                        <td>One millionth</td>
+                        <td>1/1,000,000</td>
+                    </tr>
+                    <tr>
+                        <td>Nanoseconds (ns)</td>
+                        <td>One billionth</td>
+                        <td>1/1,000,000,000</td>
+                    </tr>
+                    <tr>
+                        <td>Picoseconds (ps)</td>
+                        <td>One trillionth</td>
+                        <td>1/1,000,000,000,000</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <ul>
+                <li>
+                    <strong>Accuracy:</strong> Computers are designed to perform
+                    calculations and operations with extremely high precision, making them
+                    virtually error-free, provided the input data and instructions are
+                    correct. The principle of GIGO (Garbage In, Garbage Out) highlights
+                    that errors in output are typically due to incorrect input or faulty
+                    programming, not the computer's inherent inaccuracy.
+                </li>
+
+                <li>
+                    <strong>Diligence:</strong> Unlike humans, computers can perform
+                    repetitive tasks tirelessly and consistently without any loss of
+                    concentration, boredom, or fatigue. This characteristic makes them
+                    ideal for tasks requiring continuous, high-volume processing.
+                </li>
+
+                <li>
+                    <strong>Versatility:</strong> A single computer can perform a wide
+                    variety of tasks, from complex scientific calculations and data
+                    analysis to word processing, gaming, and multimedia creation. This
+                    adaptability makes them invaluable across diverse fields.
+                </li>
+
+                <li>
+                    <strong>Storage:</strong> Computers have a vast capacity to store large
+                    amounts of data and information. Storage capacity is measured in units
+                    based on bytes, as shown in the table below:
+                </li>
+            </ul>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Storage Term</th>
+                        <th>Approximate Number of Bytes</th>
+                        <th>Exact Number of Bytes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Kilobyte (KB)</td>
+                        <td>1 thousand</td>
+                        <td>2^10 or 1,024</td>
+                    </tr>
+                    <tr>
+                        <td>Megabyte (MB)</td>
+                        <td>1 million</td>
+                        <td>2^20 or 1,048,576</td>
+                    </tr>
+                    <tr>
+                        <td>Gigabyte (GB)</td>
+                        <td>1 billion</td>
+                        <td>2^30 or 1,073,741,824</td>
+                    </tr>
+                    <tr>
+                        <td>Terabyte (TB)</td>
+                        <td>1 trillion</td>
+                        <td>2^40 or 1,099,511,627,776</td>
+                    </tr>
+                    <tr>
+                        <td>Petabyte (PB)</td>
+                        <td>1 quadrillion</td>
+                        <td>2^50 or 1,125,899,906,842,624</td>
+                    </tr>
+                    <tr>
+                        <td>Exabyte (EB)</td>
+                        <td>1 quintillion</td>
+                        <td>2^60 or 1,152,921,504,606,846,976</td>
+                    </tr>
+                    <tr>
+                        <td>Zettabyte (ZB)</td>
+                        <td>1 sextillion</td>
+                        <td>2^70 or 1,180,591,620,717,411,303,424</td>
+                    </tr>
+                    <tr>
+                        <td>Yottabyte (YB)</td>
+                        <td>1 septillion</td>
+                        <td>2^80 or 1,208,925,819,614,629,174,706,176</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <ul>
+                <li>
+                    <strong>Automatic:</strong> Once given instructions and data, a
+                    computer can execute tasks automatically without further human
+                    intervention until the task is completed or new instructions are
+                    required.
+                </li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>3. Limitations of Computers</h2>
+
+            <ul>
+                <li><strong>Lack of Intelligence:</strong> Computers are machines and do not possess true intelligence, common sense, or the ability to think independently. They can only follow programmed instructions.</li>
+
+                <li><strong>No Decision-Making Capability:</strong> Computers cannot make decisions on their own. Any decision they appear to make is based on predefined algorithms and rules.</li>
+
+                <li><strong>Dependence on Instructions:</strong> Computers are entirely dependent on human-provided instructions. Without a program, a computer is a mere collection of electronic components.</li>
+
+                <li><strong>Environmental Sensitivity:</strong> Computers are sensitive to environmental factors such as dust, humidity, and extreme temperatures. They require a controlled environment to function optimally.</li>
+
+                <li><strong>Cost:</strong> High-performance computers and their peripherals can be expensive to acquire and maintain.</li>
+
+                <li><strong>Maintenance Requirements:</strong> Regular maintenance, including software updates and hardware checks, is necessary to ensure optimal performance and longevity.</li>
+
+                <li><strong>Skilled Operators:</strong> Operating and programming computers often requires specialized skills and knowledge.</li>
+
+                <li><strong>Power Dependency:</strong> Computers require a continuous power supply to operate. They cease to function during power outages unless backed up by an uninterruptible power supply (UPS).</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>4. Applications of Computers</h2>
+
+            <ul>
+                <li>
+                    <strong>Banking and Finance:</strong> Computers are extensively used
+                    for online accounting, managing transactions, operating ATMs,
+                    facilitating e-banking, and SMS banking services. They enable
+                    efficient record-keeping, fund transfers, and financial analysis.
+                </li>
+
+                <li>
+                    <strong>Education:</strong> In education, computers support distance
+                    learning, Computer-Based Education (CBE), Computer-Aided Learning
+                    (CAL), and Computer-Aided Instruction (CAI). They provide interactive
+                    learning environments, access to vast information resources, and tools
+                    for research and presentation.
+                </li>
+
+                <li>
+                    <strong>Industries:</strong> Computers play a crucial role in
+                    manufacturing and industrial automation. They control robots for tasks
+                    like welding, painting, and assembly, enabling precision and
+                    efficiency in production lines. Computer-Aided Manufacturing (CAM) is
+                    widely used for designing and producing goods.
+                </li>
+
+                <li>
+                    <strong>Hospital and Healthcare:</strong> Computers assist in managing
+                    patient records, diagnosing diseases through advanced scanning
+                    techniques (e.g., ECG, EEG, CT scans), and even performing virtual
+                    surgeries for training purposes. They enhance the accuracy and speed
+                    of medical procedures and record-keeping.
+                </li>
+
+                <li>
+                    <strong>Science and Engineering:</strong> Computers are indispensable
+                    for complex calculations, simulations, and modeling in scientific
+                    research and engineering design. They are used for circuit design,
+                    structural analysis, urban planning, and developing new technologies.
+                </li>
+
+                <li>
+                    <strong>Office Automation:</strong> Computers streamline office tasks
+                    such as word processing, spreadsheet management, presentation
+                    creation, and database management. They improve productivity and
+                    organization in administrative environments.
+                </li>
+
+                <li>
+                    <strong>Business Advertisement and Marketing:</strong> Computers are
+                    vital for modern marketing strategies, including Search Engine
+                    Optimization (SEO), managing web traffic, e-commerce platforms, and
+                    digital design for advertisements. They help businesses reach wider
+                    audiences and analyze market trends effectively.
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</div>
+
+<footer>
+    Computer System - Chapter 1 | Class 11 Computer Science
+</footer>
+
+<script>
+const searchInput = document.getElementById('searchInput');
+
+searchInput.addEventListener('keyup', function() {
+    let filter = this.value.toLowerCase();
+    let sections = document.querySelectorAll('.section');
+
+    sections.forEach(section => {
+        let text = section.textContent.toLowerCase();
+
+        if(text.includes(filter)){
+            section.style.display = 'block';
+        }else{
+            section.style.display = 'none';
+        }
+    });
+});
+</script>
+
+</body>
+</html>
