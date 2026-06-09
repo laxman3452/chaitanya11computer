@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Ready Answers: Computer Classification</title>
+    <style>
+        :root {
+            --exam-blue: #1e3a8a;
+            --exam-text: #1f2937;
+            --keyword-color: #d97706;
+            --bg-canvas: #f3f4f6;
+            --card-bg: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: var(--bg-canvas);
+            color: var(--exam-text);
+            line-height: 1.5;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .exam-sheet {
+            max-width: 850px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 4px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            border-top: 8px solid var(--exam-blue);
+        }
+
+        h1 {
+            color: var(--exam-blue);
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #6b7280;
+            margin-top: 0;
+            margin-bottom: 30px;
+            font-size: 14px;
+            font-style: italic;
+        }
+
+        .control-panel {
+            background: #eff6ff;
+            padding: 15px;
+            border-radius: 6px;
+            border: 1px solid #bfdbfe;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .btn-toggle {
+            background-color: var(--exam-blue);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-toggle:hover {
+            background-color: #1d4ed8;
+        }
+
+        .exam-question {
+            background: #f8fafc;
+            border-left: 4px solid #64748b;
+            padding: 12px 15px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-weight: bold;
+            color: #334155;
+        }
+
+        .exam-answer {
+            padding-left: 5px;
+        }
+
+        .keyword {
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .highlight-active .keyword {
+            color: var(--keyword-color);
+            background-color: #fffbeb;
+            padding: 0 2px;
+            border-radius: 2px;
+        }
+
+        .marks-tag {
+            float: right;
+            background: #e2e8f0;
+            color: #475569;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: normal;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        th, td {
+            border: 1px solid #cbd5e1;
+            padding: 10px 12px;
+            font-size: 14px;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        th {
+            background-color: #f1f5f9;
+            color: var(--exam-blue);
+            font-weight: bold;
+        }
+
+        ul {
+            margin: 5px 0;
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 4px;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: #e2e8f0;
+            margin: 40px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="exam-sheet" id="sheet">
+        <h1>Standard Exam Writing Formats</h1>
+        <p class="subtitle">Structured solutions based directly on the textbook marking criteria</p>
+
+        <div class="control-panel">
+            <p style="margin: 0 0 10px 0; font-size: 14px; color: #1e40af;"><strong>Study Mode Selector:</strong> Toggle to highlight high-yield grading keywords.</p>
+            <button class="btn-toggle" onclick="toggleKeywords()">Toggle Score Booster Mode</button>
+        </div>
+
+        <!-- QUESTION 1 -->
+        <div class="exam-question">
+            <span class="marks-tag">[5 Marks]</span>
+            Q1. Write a short note on Analog Computer.
+        </div>
+        <div class="exam-answer">
+            <p><strong>Definition:</strong><br>
+            An <strong>Analog computer</strong> is a special-purpose machine that operates on <span class="keyword">continuous data</span>, usually of a physical nature such as length, voltage, or currents. Instead of counting discrete digits, it functions by measuring physical quantities in the form of <span class="keyword">wave signals</span>.</p>
+            
+            <p><strong>Major Characteristics:</strong></p>
+            <ul>
+                <li>It processes <span class="keyword">approximate values</span> rather than exact, discrete numbers.</li>
+                <li>It operates in <span class="keyword">real-time</span>, making its processing speed extremely fast.</li>
+                <li>It features <span class="keyword">very low accuracy</span> due to external physical variables.</li>
+                <li>It possesses <span class="keyword">no or limited storage</span> capacity and lacks the option for reprogramming.</li>
+            </ul>
+            <p><strong>Examples:</strong> Speedometer, Thermometer, Barometer, and Lactometer.</p>
+        </div>
+
+        <!-- QUESTION 2 -->
+        <div class="exam-question">
+            <span class="marks-tag">[5 Marks]</span>
+            Q2. Explain Digital Computer with its core features.
+        </div>
+        <div class="exam-answer">
+            <p><strong>Definition:</strong><br>
+            A <strong>Digital computer</strong> is a general-purpose device that works directly with <span class="keyword">discrete signals</span> represented through binary digits, namely <span class="keyword">0s and 1s</span>. It solves computational tasks by counting digits rather than measuring physical parameters.</p>
+            
+            <p><strong>Major Characteristics:</strong></p>
+            <ul>
+                <li>It translates data into binary packets where each bit represents distinct <span class="keyword">electrical pulses</span>.</li>
+                <li>It delivers exceptionally <span class="keyword">high accuracy</span> and precision rates.</li>
+                <li>It is built with <span class="keyword">high storage capacity</span> to hold substantial data volumes.</li>
+                <li>It is dynamic and can be easily <span class="keyword">reprogrammed</span> to execute multi-purpose tasks.</li>
+            </ul>
+            <p><strong>Examples:</strong> IBM PC, Apple Macintosh, and standard desktop computers.</p>
+        </div>
+
+        <hr>
+
+        <!-- QUESTION 3: DIFFERENCE TABLE -->
+        <div class="exam-question">
+            <span class="marks-tag">[5 or 10 Marks]</span>
+            Q3. Differentiate between Analog Computer and Digital Computer.
+        </div>
+        <div class="exam-answer">
+            <p><em>Note: For maximum marks in exams, always present differences in a clean tabular format using clear parameters.</em></p>
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 5%;">S.N.</th>
+                        <th style="width: 20%;">Basis / Parameter</th>
+                        <th style="width: 37%;">Analog Computer</th>
+                        <th style="width: 38%;">Digital Computer</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td><strong>Operational Data</strong></td>
+                        <td>Works on <span class="keyword">physical values</span> (temperature, pressure).</td>
+                        <td>Works on <span class="keyword">binary digits</span> (0s and 1s).</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td><strong>Data Nature</strong></td>
+                        <td>Based on <span class="keyword">continuous data</span>.</td>
+                        <td>Based on <span class="keyword">discrete data</span>.</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td><strong>Primary Principle</strong></td>
+                        <td>Operates by <span class="keyword">measuring</span>.</td>
+                        <td>Operates by <span class="keyword">counting</span> and adding.</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td><strong>Accuracy Level</strong></td>
+                        <td>Has <span class="keyword">very low accuracy</span>.</td>
+                        <td>Has <span class="keyword">high accuracy</span>.</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td><strong>Execution Speed</strong></td>
+                        <td><span class="keyword">Slower processing</span>.</td>
+                        <td><span class="keyword">Faster processing</span>.</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td><strong>Storage Capacity</strong></td>
+                        <td><span class="keyword">No or limited</span> storage capacity.</td>
+                        <td><span class="keyword">High storage</span> capacity.</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td><strong>Flexibility</strong></td>
+                        <td>Performs <span class="keyword">single purpose</span> jobs.</td>
+                        <td>Performs <span class="keyword">multi-purpose</span> jobs.</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td><strong>Programmability</strong></td>
+                        <td>No possibility of <span class="keyword">reprogramming</span>.</td>
+                        <td>Can be <span class="keyword">reprogrammed</span>.</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td><strong>Signal Type</strong></td>
+                        <td>Stored in the form of <span class="keyword">wave signal</span>.</td>
+                        <td>Stored in the form of <span class="keyword">binary bit</span>.</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td><strong>Cost & Portability</strong></td>
+                        <td>Cost is low and <span class="keyword">portable</span>.</td>
+                        <td>Cost is high and <span class="keyword">easily not portable</span>.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <hr>
+
+        <!-- QUESTION 4 -->
+        <div class="exam-question">
+            <span class="marks-tag">[5 Marks]</span>
+            Q4. What is a Hybrid Computer? Highlight its main features.
+        </div>
+        <div class="exam-answer">
+            <p><strong>Definition:</strong><br>
+            A <strong>Hybrid computer</strong> is a single machine that <span class="keyword">combines the best features</span> of both analog and digital computers. It helps users process both continuous and discrete data by accepting analog signals and converting them into digital values.</p>
+            
+            <p><strong>Key Characteristics:</strong></p>
+            <ul>
+                <li>It <span class="keyword">combines qualities</span>: the speed of an analog architecture mixed with the memory and precision of a digital layout.</li>
+                <li>It can process <span class="keyword">both continuous and discrete data</span> types simultaneously.</li>
+                <li>It has built-in capability to <span class="keyword">convert signals</span> from one operational type to another.</li>
+                <li>These machines are specialized, highly sophisticated, and <span class="keyword">expensive (high cost)</span>.</li>
+            </ul>
+            <p><strong>Examples:</strong> Used primarily in <span class="keyword">hospitals to measure the heartbeat of a patient</span>, inside aero planes/jet planes, and across specialized industries.</p>
+        </div>
+
+    </div>
+
+    <script>
+        function toggleKeywords() {
+            var sheet = document.getElementById("sheet");
+            sheet.classList.toggle("highlight-active");
+        }
+    </script>
+</body>
+</html>
