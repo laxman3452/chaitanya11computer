@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer Classification - Exam Notes</title>
+    <style>
+        :root {
+            --primary: #2b6cb0;
+            --secondary: #319795;
+            --dark: #2d3748;
+            --light: #f7fafc;
+            --accent: #e53e3e;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 0.8rem;
+            margin-bottom: 2rem;
+            border: 2px solid #cbd5e0;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            border-left: 5px solid var(--primary);
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+        }
+
+        h2 {
+            color: var(--primary);
+            margin-top: 0;
+            border-bottom: 2px solid #edf2f7;
+            padding-bottom: 0.5rem;
+        }
+
+        h3 {
+            color: var(--secondary);
+            margin-top: 1rem;
+        }
+
+        ul {
+            padding-left: 1.2rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        .badge {
+            background-color: #edf2f7;
+            color: var(--dark);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-right: 0.5rem;
+        }
+
+        /* Quiz Section Styles */
+        .quiz-container {
+            background: #edf2f7;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 3rem;
+            border: 2px dashed var(--secondary);
+        }
+
+        .btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background-color: #2c5282;
+        }
+
+        .quiz-option {
+            display: block;
+            background: white;
+            padding: 0.8rem;
+            margin: 0.5rem 0;
+            border-radius: 6px;
+            cursor: pointer;
+            border: 1px solid #cbd5e0;
+        }
+
+        .quiz-option:hover {
+            background-color: #e2e8f0;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Computer Systems Study Guide</h1>
+        <p>Short, High-Yield Notes for Quick Exam Revision</p>
+    </header>
+
+    <div class="container">
+        <input type="text" id="searchBar" class="search-box" placeholder="🔍 Search topics (e.g., Supercomputer, Hybrid, Laptop)..." onkeyup="searchNotes()">
+
+        <section class="note-section" data-title="hybrid computer">
+            <div class="card">
+                <h2>1. Hybrid Computer</h2>
+                <p><strong>Definition:</strong> A computer that combines the best features of both <strong>Analog</strong> and <strong>Digital</strong> computers.</p>
+                <ul>
+                    <li>Processes both continuous (analog) and discrete (digital) data.</li>
+                    <li>Converts signals back and forth (Analog &harr; Digital).</li>
+                    <li><strong>Key Applications:</strong> Hospitals (heartbeat monitoring), Aeroplanes, Jet planes, and Industries.</li>
+                    <li><strong>Drawback:</strong> High cost (expensive).</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="note-section" data-title="classification size super mainframe mini micro">
+            <div class="card" style="border-left-color: var(--secondary);">
+                <h2>Classification of Computers (By Size)</h2>
+                <p>From largest/fastest to smallest/slowest:</p>
+                <ol>
+                    <li><strong>Supercomputer</strong> (Largest & Fastest)</li>
+                    <li><strong>Mainframe Computer</strong></li>
+                    <li><strong>Mini Computer</strong> (Mid-range)</li>
+                    <li><strong>Microcomputer</strong> (Smallest / Personal Devices)</li>
+                </ol>
+            </div>
+        </section>
+
+        <section class="note-section" data-title="supercomputer aerospace weather defense">
+            <div class="card">
+                <h2>2. Supercomputer</h2>
+                <p><strong>Core Features:</strong> Largest, fastest, and most expensive. Multi-user, multiprocessor systems utilizing <strong>parallel processing</strong> (multiple CPUs processing tasks at once).</p>
+                <ul>
+                    <li>Uses Multiple RISC (Reduced Instruction Set Computer) processors.</li>
+                    <li><strong>Historical Specs (Textbook):</strong> 64-bit systems, 100 MIPS speed, 8 MB storage.</li>
+                    <li><strong>Examples:</strong> CRAY-XMP/14, CDC-205, CYBER 205, ETA 10.</li>
+                </ul>
+                <h3>Top Exam Applications:</h3>
+                <ul>
+                    <li><span class="badge">Petroleum</span> Analyzing seismic data for oil exploration.</li>
+                    <li><span class="badge">Aerospace</span> Simulating airflow around aircraft (Aerodynamic designs).</li>
+                    <li><span class="badge">Automobile</span> Crash simulation designs before manufacturing.</li>
+                    <li><span class="badge">Meteorology</span> Weather forecasting.</li>
+                    <li><span class="badge">Military</span> Weapons research, defense systems, and decrypting sensitive intel.</li>
+                    <li><span class="badge">Science</span> DNA structure study and biomedical research (e.g., virus analysis).</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="note-section" data-title="mainframe computer business server terminal ibm">
+            <div class="card">
+                <h2>3. Mainframe Computer</h2>
+                <p><strong>Core Features:</strong> Large, highly powerful general-purpose computers designed for large-scale data processing. Known as the <strong>"Enterprise Server"</strong>.</p>
+                <ul>
+                    <li>Acts as the central "heart" of big businesses.</li>
+                    <li>Users access it via <strong>Terminals</strong> (Screen + Keyboard, but no internal processing unit). Supports ~100 terminals simultaneously.</li>
+                    <li>Can run multiple operating systems simultaneously (Virtual Machines).</li>
+                    <li><strong>Examples:</strong> IBM 1401, ICL 2959/10, IBM S/390, UNIVAC I (used by Census Bureau).</li>
+                    <li><strong>Applications:</strong> Banks, Airlines, Insurance companies, Railways, Government census data.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="note-section" data-title="mini computer mid-range workstations ibm pdp">
+            <div class="card">
+                <h2>4. Mini Computer (Mid-range Systems)</h2>
+                <p><strong>Core Features:</strong> Medium-sized computers. Bigger than microcomputers, but smaller than mainframes. Developed in the 1960s using transistor and core memory technologies.</p>
+                <ul>
+                    <li>Supports a small number of terminals (approx. 50).</li>
+                    <li>Less powerful/expensive than Mainframes; more powerful/expensive than Microcomputers.</li>
+                    <li><strong>Examples:</strong> IBM AS, Prime Series, HP 9000, PDP 11, IBM 8000 series.</li>
+                    <li><strong>Applications:</strong> Used by medium-sized firms or individual departments of large companies as centralized local servers.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="note-section" data-title="microcomputer desktop laptop handheld pda pc">
+            <div class="card">
+                <h2>5. Microcomputers (Personal Computers)</h2>
+                <p><strong>Core Features:</strong> The smallest and cheapest type of computer. Uses a <strong>Microchip / Microprocessor</strong> as its CPU. Designed for single-user use (1 person at a time).</p>
+                <ul>
+                    <li>Supports modern features: High-level programming languages, multimedia, 3D graphics, networking, GUI, and CUI.</li>
+                    <li><strong>Companies:</strong> IBM, Apple, Hewlett Packard (HP), Compaq.</li>
+                </ul>
+
+                <h3>Types of Microcomputers:</h3>
+                <ul>
+                    <li><strong>Desktop:</strong> Non-mobile workstation computer intended for a fixed location.</li>
+                    <li><strong>Laptop (Notebook):</strong> Light, compact, portable PC with a built-in battery, LCD monitor, and trackpad. Uses a clam-shell case design.</li>
+                    <li><strong>Handheld (Palmtop):</strong> Small enough to fit in your palm. Less powerful, runs specialized OS (like older Windows Mobile or Palm OS). Now mostly replaced by smartphones.</li>
+                    <li><strong>PDA (Personal Digital Assistant):</strong> Similar to palmtops but typically has <strong>no keyboard</strong>—uses a touch screen and a <strong>stylus</strong> with handwriting recognition. Used as a digital diary (e-mails, calendar, documents).</li>
+                </ul>
+            </div>
+        </section>
+
+        <div class="quiz-container">
+            <h2>✏️ Flash Quiz: Test Your Exam Readiness!</h2>
+            <div id="quiz-box">
+                <p id="question">Loading question...</p>
+                <div id="options"></div>
+                <br>
+                <button class="btn" onclick="nextQuestion()">Skip Question</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Search Engine Function
+        function searchNotes() {
+            let input = document.getElementById('searchBar').value.toLowerCase();
+            let sections = document.getElementsByClassName('note-section');
+
+            for (let i = 0; i < sections.length; i++) {
+                let text = sections[i].getAttribute('data-title');
+                if (text.includes(input)) {
+                    sections[i].style.display = "";
+                } else {
+                    sections[i].style.display = "none";
+                }
+            }
+        }
+
+        // Quiz Data
+        const quizData = [
+            {
+                q: "Which computer combines both analog and digital features?",
+                a: ["Supercomputer", "Mainframe", "Hybrid Computer", "Microcomputer"],
+                correct: 2
+            },
+            {
+                q: "Which type of computer uses Parallel Processing and multiple RISC processors?",
+                a: ["Mini Computer", "Supercomputer", "Mainframe", "PDA"],
+                correct: 1
+            },
+            {
+                q: "Mainframe computers are often referred to as what?",
+                a: ["Workstations", "Enterprise Servers", "Mid-range systems", "Palmtops"],
+                correct: 1
+            },
+            {
+                q: "Which device is characterized by having NO keyboard and using a stylus?",
+                a: ["Laptop", "Desktop", "PDA", "Mini Computer"],
+                correct: 2
+            },
+            {
+                q: "Approximately how many terminals does a Mini Computer support?",
+                a: ["Around 100", "Around 50", "Only 1", "Unlimited"],
+                correct: 1
+            }
+        ];
+
+        let currentQuestion = 0;
+
+        function loadQuestion() {
+            const qData = quizData[currentQuestion];
+            document.getElementById('question').innerHTML = `<strong>Q: ${qData.q}</strong>`;
+            
+            let optionsHtml = '';
+            qData.a.forEach((option, index) => {
+                optionsHtml += `<button class="quiz-option" onclick="checkAnswer(${index})">${option}</button>`;
+            });
+            document.getElementById('options').innerHTML = optionsHtml;
+        }
+
+        function checkAnswer(selectedIndex) {
+            const correctIndex = quizData[currentQuestion].correct;
+            if (selectedIndex === correctIndex) {
+                alert("🎉 Correct Answer!");
+            } else {
+                alert(`❌ Incorrect. The right answer was: ${quizData[currentQuestion].a[correctIndex]}`);
+            }
+            nextQuestion();
+        }
+
+        function nextQuestion() {
+            currentQuestion = (currentQuestion + 1) % quizData.length;
+            loadQuestion();
+        }
+
+        // Initialize quiz on page load
+        window.onload = loadQuestion;
+    </script>
+</body>
+</html>
